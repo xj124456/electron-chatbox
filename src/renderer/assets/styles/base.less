@@ -1,0 +1,253 @@
+html,
+body {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+}
+#app {
+  color: #333;
+}
+.padding {
+  padding: 10px;
+}
+input[placeholder],
+button {
+  // font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+}
+.nodata {
+  // background-image: url(../assets/nodata.png);
+  background-position: center center;
+  background-size: 140px;
+  background-repeat: no-repeat no-repeat;
+  padding-top: 200px;
+  color: #999;
+  text-align: center;
+}
+.one_line_hidden {
+  // 一行显示, 超出隐藏
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 版心
+.container {
+  padding: 0 20px;
+  box-sizing: border-box;
+  // margin: 0 auto 28px;
+  position: relative;
+}
+// header导航 上浮布局
+.header-top {
+  margin-top: -50px;
+}
+
+// 鼠标小手
+.linkTo {
+  cursor: pointer;
+  // cursor: url('../assets/right.png') 4 12, auto;
+}
+// 浮动
+.float-R {
+  float: right;
+}
+.float-L {
+  float: left;
+}
+/* 兼容到IE8 */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table; /* 也可以设置为block */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/* 兼容IE6/7 */
+.clearfix {
+  *zoom: 1;
+}
+// 填充箭头
+.down-arrow,
+.top-arrow {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+.down-arrow::after {
+  border-top: 3px solid @font-deft;
+}
+.top-arrow::after {
+  border-bottom: 3px solid @font-deft;
+}
+
+// 空心箭头
+.right-arrow-air {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-top: 1.5px solid @white;
+    border-left: 1.5px solid @white;
+    top: 50%;
+    right: 15px;
+    margin-top: -2px;
+  }
+  &::before {
+    width: 15px;
+    height: 15px;
+    border: 1.5px solid @white;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+}
+.right-arrow-air::after {
+  transform: rotate(135deg);
+}
+// 纵向分隔线
+.dividing-line-Y {
+  border-right: @border-main;
+}
+
+// 头部 tabbar 布局
+.tabbar {
+  text-align: right;
+  margin-bottom: 10px;
+  .tabbar-list {
+    margin-right: 310px;
+  }
+}
+// 自适应 图片居中平铺
+.cover-img {
+  background-position: center center;
+  background-size: cover;
+}
+
+// 页面进入退出动画
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 400ms; // 速度
+  position: absolute;
+}
+
+.slide-right-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-left-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// 按鈕波紋樣式 默認
+.ripple-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  overflow: hidden;
+  box-shadow: 0 0 2px 0 rgb(177, 177, 177);
+}
+
+.ripple-effect {
+  margin-top: 0px;
+  margin-left: 0px;
+  width: 1px;
+  height: 1px;
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+  border-radius: 50%;
+  pointer-events: none;
+  position: relative;
+  z-index: 9999;
+}
+
+// 暂无数据
+.nodata {
+  margin: 100px auto;
+  display: block;
+}
+.sub-title {
+  line-height: 30px;
+  font-weight: bold;
+  color: #313131;
+  border-bottom: 1px dashed #e2e2e2;
+  padding: 5px 16px;
+}
+@media (max-width: @screen-sm-min) {
+  .v-page {
+    position: absolute;
+    top: 0px;
+    bottom: 56px;
+    width: 100%;
+    left: 0;
+    overflow: auto;
+    padding-top: 50px;
+  }
+  .mob-hide {
+    display: none !important;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .v-page {
+  }
+  .pc-hide {
+    display: none !important;
+  }
+}
+
+.leftmenu .item:hover {
+  background: #f3dfdd !important;
+  padding-left: 20px !important;
+}
+.bor1 {
+  border: 1px solid #eee;
+}

@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.jcb {
+    justify-content: space-between;
+  }
+
+  &.jca {
+    justify-content: space-around;
+  }
+
+  &.jcc {
+    justify-content: center;
+  }
+
+  &.acc {
+    align-content: center;
+  }
+
+  &.aic {
+    align-items: center;
+  }
+
+  &.ac-end {
+    align-content: flex-end;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-sub {
+  flex: 1;
+  overflow: auto;
+}

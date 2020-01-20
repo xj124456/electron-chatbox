@@ -1,0 +1,179 @@
+// 生成一定范围的margin原子类，参数：
+// @min: 最小值
+// @max: 最大值
+// @space: 间距
+// @pre: 前缀
+.init-margin(@min: 0, @max: 100, @space: 5, @pre: cf) {
+  // 递归生成margin
+  .build-margin(@count) when (@count >=@min) {
+    .build-margin((@count - @space));
+
+    .@{pre}-mt-@{count} {
+      margin-top: @count * 1px;
+    }
+
+    .@{pre}-mb-@{count} {
+      margin-bottom: @count * 1px;
+    }
+
+    .@{pre}-mtb-@{count} {
+      margin-top: @count * 1px;
+      margin-bottom: @count * 1px;
+    }
+
+    .@{pre}-ml-@{count} {
+      margin-left: @count * 1px;
+    }
+
+    .@{pre}-mr-@{count} {
+      margin-right: @count * 1px;
+    }
+
+    .@{pre}-mlr-@{count} {
+      margin-left: @count * 1px;
+      margin-right: @count * 1px;
+    }
+    .@{pre}-ma-@{count} {
+      margin: @count * 1px;
+    }
+  }
+  .build-margin(@max);
+}
+
+// 生成一定范围的padding原子类，参数：
+// @min: 最小值
+// @max: 最大值
+// @space: 间距
+// @pre: 前缀
+.init-padding(@min: 0, @max: 100, @space: 5, @pre: cf) {
+  // 递归生成padding
+  .build-padding(@count) when (@count >=@min) {
+    .build-padding((@count - @space));
+
+    .@{pre}-pt-@{count} {
+      padding-top: @count * 1px;
+    }
+
+    .@{pre}-pb-@{count} {
+      padding-bottom: @count * 1px;
+    }
+
+    .@{pre}-ptb-@{count} {
+      padding-top: @count * 1px;
+      padding-bottom: @count * 1px;
+    }
+
+    .@{pre}-pl-@{count} {
+      padding-left: @count * 1px;
+    }
+
+    .@{pre}-pr-@{count} {
+      padding-right: @count * 1px;
+    }
+
+    .@{pre}-plr-@{count} {
+      padding-left: @count * 1px;
+      padding-right: @count * 1px;
+    }
+
+    .@{pre}-pa-@{count} {
+      padding: @count * 1px;
+    }
+  }
+
+  .build-padding(@max);
+}
+
+// 生成常用class，参数：
+// @pre: 前缀
+.init-common(@pre: cf) {
+  .@{pre}-clearfix {
+    *zoom: 1;
+
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+      line-height: 0;
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+
+  // 超出长度的文本显示省略号
+  .@{pre}-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // 配合父元素的overflow: hidden，可以实现多栏等高
+  // 3000不够可以自己调大
+  .@{pre}-high {
+    margin-bottom: -3000px;
+    padding-bottom: 3000px;
+  }
+
+  .@{pre}-hide {
+    display: none;
+  }
+
+  .@{pre}-circle {
+    border-radius: 50%;
+  }
+
+  // overflow: hidden可以开启BFC，这是CSS布局最有用的一个属性之一
+  .@{pre}-oh {
+    overflow: hidden;
+  }
+
+  .@{pre}-fl {
+    float: left;
+  }
+
+  .@{pre}-fr {
+    float: right;
+  }
+
+  .@{pre}-tac {
+    text-align: center;
+  }
+
+  .@{pre}-tar {
+    text-align: right;
+  }
+
+  .@{pre}-tal {
+    text-align: left;
+  }
+
+  .@{pre}-width-full {
+    width: 100%;
+  }
+
+  .@{pre}-height-full {
+    height: 100%;
+  }
+
+  .@{pre}-m0 {
+    margin: 0 !important;
+  }
+
+  .@{pre}-p0 {
+    padding: 0 !important;
+  }
+}
+
+.init-margin(0, 30, 5, v);
+.init-padding(0, 30, 5, v);
+.init-common(v);
+
+.v-ovh {
+  overflow: hidden;
+}
+
+.v-ova {
+  overflow: auto;
+}
