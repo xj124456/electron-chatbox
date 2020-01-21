@@ -45,7 +45,7 @@ export default {
       saveLoading: false,
       msgList: [],
       enterCheck: true,
-      localImgUploadAPI: 'https://www.xxx.com/api/image/upload',
+      localImgUploadAPI: 'http://test-svr.nn.com/upload/image',
       networkImgUploadAPI: 'https://www.xxx.com/api/url/upload'
     }
   },
