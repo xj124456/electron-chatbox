@@ -11,11 +11,6 @@ export default new Router({
       component: require('@/components/index/Index').default
     },
     {
-      path: '/add',
-      name: 'IndexAdd',
-      component: require('@/components/index/IndexAdd').default
-    },
-    {
       path: '/img-viewer',
       name: 'ImageViewer',
       component: require('@/common/ImageViewer').default

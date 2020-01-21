@@ -22,53 +22,19 @@ function createWindow () {
   /**
    * Initial window options
    */
-  ipcMain.removeAllListeners()
+
+  // ipcMain.removeAllListeners()
   mainWindow = new BrowserWindow({
-    height: 660,
+    height: 600,
     width: 800,
+    useContentSize: true,
     autoHideMenuBar: true,
     webPreferences: {
       webSecurity: false,
-      nodeIntegration: true,
-      devTools: true
+      nodeIntegration: true
     }
   })
   mainWindow.loadURL(winURL)
-
-  // 添加音乐窗口
-  // ipcMain.on('add-music-window', (event, params) => {
-  //   addWindow = new BrowserWindow({
-  //     width: 500,
-  //     height: 400,
-  //     autoHideMenuBar: true,
-  //     modal: true,
-  //     webPreferences: {
-  //       nodeIntegration: true,
-  //       devTools: true
-  //     },
-  //     parent: mainWindow
-  //   })
-  //   addWindow.loadURL(`${winURL}#/add`)
-  //   event.reply('load-success')
-  // })
-
-  // addWindow添加音乐文件
-  // ipcMain.on('open-music-file', (event) => {
-  //   dialog.showOpenDialog({
-  //     properties: ['openFile', 'multiSelections'],
-  //     filters: [{ name: 'Music', extensions: ['mp3'] }]
-  //   }).then(res => {
-  //     if (res.filePaths) {
-  //       event.sender.send('selected-file', res.filePaths)
-  //     }
-  //   })
-  // })
-
-  // 导入音乐到曲库
-  // ipcMain.on('add-tracks', (event, tracks) => {
-  //   // const updateTracks = Storage.addTracks(tracks).getTracks()
-  //   // console.log(updateTracks)
-  // })
 
   // 采用原生窗口的图片预览
   ipcMain.on('img-viewer', (event, params) => {

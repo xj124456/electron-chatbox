@@ -1,0 +1,44 @@
+{
+  "id": "1620338",
+  "name": "electron-chatbox",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "630129",
+      "name": "正确",
+      "font_class": "zhengque",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "2116614",
+      "name": "DOWNLOAD",
+      "font_class": "DOWNLOAD",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    },
+    {
+      "icon_id": "5387854",
+      "name": "撤销_o",
+      "font_class": "chexiao_o",
+      "unicode": "eb73",
+      "unicode_decimal": 60275
+    },
+    {
+      "icon_id": "10241312",
+      "name": "close",
+      "font_class": "close1",
+      "unicode": "e762",
+      "unicode_decimal": 59234
+    },
+    {
+      "icon_id": "12752353",
+      "name": "截图",
+      "font_class": "jietu_huaban",
+      "unicode": "e621",
+      "unicode_decimal": 58913
+    }
+  ]
+}

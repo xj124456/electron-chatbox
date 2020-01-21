@@ -1,5 +1,5 @@
 {
-  "name": "electron-demo",
+  "name": "electron-chatbox",
   "version": "0.0.1",
   "author": "XiongJian <452946955@qq.com>",
   "description": "An electron-vue project",
@@ -22,8 +22,8 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "electron-demo",
-    "appId": "com.example.electron",
+    "productName": "electron-chatbox",
+    "appId": "com.chatbox.electron",
     "directories": {
       "output": "build"
     },

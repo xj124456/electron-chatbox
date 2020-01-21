@@ -5,16 +5,21 @@
       <ul class="msg-list" ref="msglist">
         <li v-for="(item, index) in msgList" :key="index" v-html="item" @click="getNodeImg"></li>
       </ul>
-      <div class="im-chat margin-top" ref="msgchat" contentEditable="true" @input="onInput" @focus="onFocus" @keydown="onKeyDown"></div>
-      <!-- 发送消息按钮 -->
-      <el-dropdown class="multi-sendbtn margin-top" split-button type="primary" @click="sendMsg" @command="changeSendType">
-        发送
-        <el-dropdown-menu slot="dropdown" class="send-multi-btn">
-          <el-dropdown-item command="Enter" :icon="enterCheck ? 'el-icon-check' : ' '">按Enter键发送消息</el-dropdown-item>
-          <el-dropdown-item command="CtrlEnter" :icon="!enterCheck ? 'el-icon-check' : ' '">按Ctrl+Enter键发送消息</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    	<!-- <el-button class="full-width margin-top" type="primary" @click="toList" :loading="saveLoading">Print</el-button> -->
+      <div class="chat-container">
+        <div class="tool-bar">
+          <span class="iconfont icon-jietu_huaban" @click="screenShot" title="屏幕截图"></span>
+        </div>
+        <div class="im-chat" ref="msgchat" contentEditable="true" @input="onInput" @focus="onFocus" @keydown="onKeyDown" placeholder='请输入文字'></div>
+        <!-- 发送消息按钮 -->
+        <el-dropdown class="multi-sendbtn margin-top" split-button type="primary" @click="sendMsg" @command="changeSendType" size="small">
+          发送
+          <el-dropdown-menu slot="dropdown" class="send-multi-btn">
+            <el-dropdown-item command="Enter" :icon="enterCheck ? 'el-icon-check' : ' '">按Enter键发送消息</el-dropdown-item>
+            <el-dropdown-item command="CtrlEnter" :icon="!enterCheck ? 'el-icon-check' : ' '">按Ctrl+Enter键发送消息</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <!-- <el-button class="full-width margin-top" type="primary" @click="toList" :loading="saveLoading">Print</el-button> -->
+      </div>
     </el-main>
   </el-container>
 </template>
@@ -64,6 +69,10 @@ export default {
     })
   },
   methods: {
+    // 屏幕截图功能
+    screenShot () {
+      ipcRenderer.send('capture-screen')
+    },
     // 获取点击节点
     getNodeImg (e) {
       if (e.target.nodeName === 'IMG') {
@@ -177,18 +186,23 @@ export default {
 </script>
 
 <style scoped>
+.el-container {
+  height: 100%;
+}
+.el-main {
+  padding: 0;
+}
 ul.msg-list {
   box-sizing: border-box;
   padding: 10px;
-  background: #f3f3f3;
-  height: 300px;
+  height: calc(100% - 249px);
   overflow-y: auto;
 }
 ul.msg-list li {
   margin-top: 10px;
 }
 .margin-top {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .el-header {
   line-height: 60px;
@@ -198,19 +212,39 @@ ul.msg-list li {
 .full-width {
   width: 100%;
 }
+.chat-container {
+  border-top: 1px solid #f0f0f0;
+}
+.tool-bar {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.tool-bar span {
+  margin-left: 10px;
+  font-size: 22px;
+}
+.tool-bar span:hover {
+  cursor: pointer;
+  color: #2f82c5;
+}
 .im-chat {
   box-sizing: border-box;
-  background: #222;
-  color: #fff;
-  height: 200px;
+  color: #000;
+  height: 160px;
   word-break: break-all;
   word-break: break-word;
   overflow-y: auto;
-  padding: 10px;
+  padding: 0 10px;
+}
+.im-chat:empty::before {
+  color: #999;
+    content: attr(placeholder);
 }
 .multi-sendbtn {
   display: flex;
   justify-content: flex-end;
+  padding: 0 10px 10px 0;
 }
 </style>
 
